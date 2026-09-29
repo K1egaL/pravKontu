@@ -40,12 +40,24 @@ class Randomizer:
         self._refill()
         self._log("история сброшена, мешок полон")
 
+    def remaining(self):
+        return len(self.bag)
+
+    def total(self):
+        return self.high - self.low + 1
+
     def _log_path(self):
         if getattr(sys, "frozen", False):
             base = Path(sys.executable).parent
         else:
             base = Path(__file__).parent
         return base / "pravKontu_log.txt"
+
+    def read_log(self):
+        try:
+            return self._log_path().read_text(encoding="utf-8")
+        except OSError:
+            return ""
 
     def _log(self, message):
         try:

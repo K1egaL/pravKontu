@@ -5,6 +5,8 @@ from ui import MainWindow
 
 def main():
     app = QApplication(sys.argv)
+    app.setOrganizationName("pravKontu")
+    app.setApplicationName("pravKontu")
     window = MainWindow()
     window.show()
     sys.exit(app.exec())
